@@ -68,6 +68,12 @@ public class VacationStatusCQRSHandlerReusingAggregate {
                 BeanUtils.copyProperties(aggregate, entity);
 
                 repository.save(entity);
+
+                queryUpdateEmitter.emit(
+                    VacationStatusQuery.class,
+                    query -> true,
+                    entity
+                );
             });
     }
 
@@ -84,7 +90,6 @@ public class VacationStatusCQRSHandlerReusingAggregate {
                 BeanUtils.copyProperties(aggregate, entity);
 
                 repository.save(entity);
-
 
                 queryUpdateEmitter.emit(
                     VacationStatusQuery.class,
@@ -109,6 +114,12 @@ public class VacationStatusCQRSHandlerReusingAggregate {
                 BeanUtils.copyProperties(aggregate, entity);
 
                 repository.save(entity);
+
+                queryUpdateEmitter.emit(
+                    VacationStatusQuery.class,
+                    query -> true,
+                    entity
+                );
             });
     }
 
@@ -125,6 +136,12 @@ public class VacationStatusCQRSHandlerReusingAggregate {
                 BeanUtils.copyProperties(aggregate, entity);
 
                 repository.save(entity);
+
+                queryUpdateEmitter.emit(
+                    VacationStatusQuery.class,
+                    query -> true,
+                    entity
+                );
             });
     }
 }

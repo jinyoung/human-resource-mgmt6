@@ -1,8 +1,6 @@
 <template>
     <div>
 
-
-
             <VacationStatusQuery @search="search"></VacationStatusQuery>
 
 

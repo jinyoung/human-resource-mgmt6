@@ -3,7 +3,7 @@
 
 
 
-        <h1 style = "margin-left:4.5%; margin-top:-10px;">VacationDaysLeft</h1>
+        <h1 style = "margin-left:4.5%; margin-top:-10px;">Employee</h1>
         <v-col style="margin-bottom:40px;">
             <div class="text-center">
                 <v-dialog
@@ -13,7 +13,7 @@
                         hide-overlay
                         transition="dialog-bottom-transition"
                 >
-                    <VacationDaysLeft :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
+                    <Employee :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
                             @add="append" v-if="tick"/>
 
                     <v-btn
@@ -36,7 +36,7 @@
             </div>
         </v-col>
         <v-row>
-            <VacationDaysLeft :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
+            <Employee :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
         </v-row>
     </div>
 </template>
@@ -44,12 +44,12 @@
 <script>
 
     const axios = require('axios').default;
-    import VacationDaysLeft from './../VacationDaysLeft.vue';
+    import Employee from './../Employee.vue';
 
     export default {
-        name: 'VacationDaysLeftManager',
+        name: 'EmployeeManager',
         components: {
-            VacationDaysLeft,
+            Employee,
         },
         props: {
             offline: Boolean
@@ -73,16 +73,17 @@
 
                 var temp = null;
                 if(query!=null){
-                    temp = await axios.get(axios.fixUrl('/vacationDaysLefts/' + query.apiPath), {params: query.parameters})
+                    temp = await axios.get(axios.fixUrl('/employees/' + query.apiPath), {params: query.parameters})
                 }else{
-                    temp = await axios.get(axios.fixUrl('/vacationDaysLefts'))
+                    temp = await axios.get(axios.fixUrl('/employees'))
                 }
 
-                me.values = temp.data._embedded.vacationDaysLefts;
+                me.values = temp.data._embedded.employees;
                 
                 me.newValue = {
                     'userId': '',
-                    'dayCount': 0,
+                    'name': '',
+                    'email': '',
                 }
             },
 

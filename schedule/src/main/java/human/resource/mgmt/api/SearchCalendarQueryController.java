@@ -24,8 +24,14 @@ public class SearchCalendarQueryController {
 
     private final QueryGateway queryGateway;
 
-    public SearchCalendarQueryController(QueryGateway queryGateway) {
+    private final ReactorQueryGateway reactorQueryGateway;
+
+    public SearchCalendarQueryController(
+        QueryGateway queryGateway,
+        ReactorQueryGateway reactorQueryGateway
+    ) {
         this.queryGateway = queryGateway;
+        this.reactorQueryGateway = reactorQueryGateway;
     }
 
     @GetMapping("/calendars")

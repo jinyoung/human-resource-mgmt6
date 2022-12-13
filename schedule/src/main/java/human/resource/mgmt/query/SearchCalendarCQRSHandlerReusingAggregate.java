@@ -49,6 +49,12 @@ public class SearchCalendarCQRSHandlerReusingAggregate {
                 BeanUtils.copyProperties(aggregate, entity);
 
                 repository.save(entity);
+
+                queryUpdateEmitter.emit(
+                    SearchCalendarQuery.class,
+                    query -> true,
+                    entity
+                );
             });
     }
 
@@ -65,6 +71,12 @@ public class SearchCalendarCQRSHandlerReusingAggregate {
                 BeanUtils.copyProperties(aggregate, entity);
 
                 repository.save(entity);
+
+                queryUpdateEmitter.emit(
+                    SearchCalendarQuery.class,
+                    query -> true,
+                    entity
+                );
             });
     }
 
@@ -81,7 +93,7 @@ public class SearchCalendarCQRSHandlerReusingAggregate {
         repository.save(entity);
 
         queryUpdateEmitter.emit(
-            CalendarRegisteredQuery.class,
+            SearchCalendarQuery.class,
             query -> true,
             entity
         );
