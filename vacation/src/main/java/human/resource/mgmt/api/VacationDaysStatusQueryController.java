@@ -24,8 +24,14 @@ public class VacationDaysStatusQueryController {
 
     private final QueryGateway queryGateway;
 
-    public VacationDaysStatusQueryController(QueryGateway queryGateway) {
+    private final ReactorQueryGateway reactorQueryGateway;
+
+    public VacationDaysStatusQueryController(
+        QueryGateway queryGateway,
+        ReactorQueryGateway reactorQueryGateway
+    ) {
         this.queryGateway = queryGateway;
+        this.reactorQueryGateway = reactorQueryGateway;
     }
 
     @GetMapping("/vacationDaysStatuses")

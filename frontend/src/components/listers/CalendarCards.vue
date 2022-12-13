@@ -1,8 +1,6 @@
 <template>
     <div>
 
-
-
             <SearchCalendarQuery @search="search"></SearchCalendarQuery>
 
 
