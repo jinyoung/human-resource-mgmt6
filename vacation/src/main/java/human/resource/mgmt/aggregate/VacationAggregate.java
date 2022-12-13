@@ -73,10 +73,16 @@ public class VacationAggregate {
     }
 
     @EventSourcingHandler
-    public void on(VacationCancelledEvent event) {}
+    public void on(VacationCancelledEvent event) {
+
+        setStatus("CANCELLED");
+    }
 
     @EventSourcingHandler
-    public void on(VacationApprovedEvent event) {}
+    public void on(VacationApprovedEvent event) {
+        setStatus("APPROVED");
+
+    }
 
     @EventSourcingHandler
     public void on(VacationRejectedEvent event) {}

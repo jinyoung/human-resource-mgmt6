@@ -43,8 +43,8 @@ public class VacationDaysStatusCQRSHandler {
         VacationDaysAddedEvent vacationDaysAdded
     ) throws Exception {
         // view 객체 조회
-        Optional<VacationDaysStatus> vacationDaysStatusOptional = vacationDaysStatusRepository.findByUserId(
-            vacationDaysAdded.getId()
+        Optional<VacationDaysStatus> vacationDaysStatusOptional = vacationDaysStatusRepository.findById(
+            vacationDaysAdded.getUserId()
         );
 
         if (vacationDaysStatusOptional.isPresent()) {
@@ -64,8 +64,8 @@ public class VacationDaysStatusCQRSHandler {
         VacationDaysUsedEvent vacationDaysUsed
     ) throws Exception {
         // view 객체 조회
-        Optional<VacationDaysStatus> vacationDaysStatusOptional = vacationDaysStatusRepository.findByUserId(
-            vacationDaysUsed.getId()
+        Optional<VacationDaysStatus> vacationDaysStatusOptional = vacationDaysStatusRepository.findById(
+            vacationDaysUsed.getUserId()
         );
 
         if (vacationDaysStatusOptional.isPresent()) {

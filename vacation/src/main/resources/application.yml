@@ -2,6 +2,11 @@ server:
   port: 8080
   error:
     include-message: always
+
+---
+
+spring:
+  profiles: default
   jpa:
     hibernate:
       naming:
@@ -18,15 +23,11 @@ server:
     password: rootpassword
     driver-class-name: com.mysql.cj.jdbc.Driver
 
----
-
-spring:
-  profiles: default
   rsocket:
     server:
-      mapping-path: /rsocket
+      mapping-path: /rsocket/vacations
       transport: websocket
-      port: 
+      port: 7081
 
 server:
   port: 8081
@@ -36,8 +37,4 @@ server:
 spring:
   profiles: docker
 
-  rsocket:
-    server:
-      mapping-path: /rsocket/vacations
-      transport: websocket
-      port: 7081
+

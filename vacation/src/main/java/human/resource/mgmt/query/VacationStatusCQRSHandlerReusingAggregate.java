@@ -49,7 +49,7 @@ public class VacationStatusCQRSHandlerReusingAggregate {
         repository.save(entity);
 
         queryUpdateEmitter.emit(
-            VacationRegisteredQuery.class,
+            VacationStatusQuery.class,
             query -> true,
             entity
         );
@@ -84,7 +84,16 @@ public class VacationStatusCQRSHandlerReusingAggregate {
                 BeanUtils.copyProperties(aggregate, entity);
 
                 repository.save(entity);
+
+
+                queryUpdateEmitter.emit(
+                    VacationStatusQuery.class,
+                    query -> true,
+                    entity
+                );
             });
+
+    
     }
 
     @EventHandler
