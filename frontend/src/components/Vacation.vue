@@ -25,7 +25,7 @@
             <String label="Status" v-model="value.status" :editMode="editMode"/>
 
             <EventViewer
-                v-if="value._links.events"
+                v-if="value._links && value._links.events"
                 :src="value._links.events.href"
             >
             </EventViewer>
@@ -143,6 +143,8 @@
             approveDiagram: false,
         }),
         created(){
+            if(this.isNew) return;
+            
             var websocketUrl = new URL(window.location.href);
 
             websocketUrl.protocol = "wss";

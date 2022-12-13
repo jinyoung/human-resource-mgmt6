@@ -38,9 +38,13 @@ public class VacationAggregate {
         BeanUtils.copyProperties(command, event);
 
         //Please uncomment here and implement the createUUID method.
-        //event.setId(createUUID());
+        event.setId(createUUID());
 
         apply(event);
+    }
+
+    private String createUUID() {
+        return null;
     }
 
     @CommandHandler
