@@ -5,5 +5,7 @@ import lombok.Data;
 @Data
 public class SearchCalendarSingleQuery {
 
-    private String userId;
+        private String userId;
+
 }
+

@@ -109,12 +109,25 @@ public class VacationStatusQueryController {
         return model;
     }
 
-    @MessageMapping("vacationStatuses.{id}.get")
-    public Flux<VacationReadModel> vacation_subscribe(
+    // @MessageMapping("vacations.{id}.get")
+    // public Flux<VacationReadModel> vacation_subscribe(
+    //     @DestinationVariable String id
+    // ) {
+    //     return reactorQueryGateway.subscriptionQueryMany(
+    //         new VacationStatusQuery(),
+    //         VacationReadModel.class
+    //     );
+    // }
+
+    @MessageMapping("vacations.{id}.get")
+    public Flux<VacationReadModel> vacation_single_subscribe(
         @DestinationVariable String id
     ) {
-        return reactorQueryGateway.subscriptionQueryMany(
-            new VacationStatusQuery(),
+        VacationStatusSingleQuery query = new VacationStatusSingleQuery();
+        query.setId(id);
+
+        return reactorQueryGateway.subscriptionQuery(
+            query,
             VacationReadModel.class
         );
     }

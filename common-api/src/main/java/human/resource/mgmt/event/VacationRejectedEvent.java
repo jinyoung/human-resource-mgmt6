@@ -1,8 +1,12 @@
 package human.resource.mgmt.event;
 
-import java.util.Date;
 import lombok.Data;
 import lombok.ToString;
+
+import java.util.Date; 
+
+
+
 
 @Data
 @ToString
@@ -14,4 +18,5 @@ public class VacationRejectedEvent {
     private String reason;
     private String userId;
     private Integer days;
+
 }

@@ -70,8 +70,8 @@ public class VacationStatusCQRSHandlerReusingAggregate {
                 repository.save(entity);
 
                 queryUpdateEmitter.emit(
-                    VacationStatusQuery.class,
-                    query -> true,
+                    VacationStatusSingleQuery.class,
+                    query -> query.getId().equals(event.getId()),
                     entity
                 );
             });
@@ -92,8 +92,8 @@ public class VacationStatusCQRSHandlerReusingAggregate {
                 repository.save(entity);
 
                 queryUpdateEmitter.emit(
-                    VacationStatusQuery.class,
-                    query -> true,
+                    VacationStatusSingleQuery.class,
+                    query -> query.getId().equals(event.getId()),
                     entity
                 );
             });

@@ -5,5 +5,7 @@ import lombok.Data;
 @Data
 public class VacationStatusSingleQuery {
 
-    private String id;
+        private String id;
+
 }
+

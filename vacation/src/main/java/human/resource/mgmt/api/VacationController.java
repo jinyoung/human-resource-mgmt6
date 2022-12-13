@@ -139,7 +139,7 @@ public class VacationController {
                 .withRel("confirmused")
         );
 
-        model.add(Link.of("/vacations/events").withRel("events"));
+        model.add(Link.of("/vacations/" + resource.getId() + "/events").withRel("events"));
 
         return model;
     }

@@ -25,7 +25,7 @@
             <String label="Status" v-model="value.status" :editMode="editMode"/>
 
             <EventViewer
-                v-if="value._links && value._links.events"
+                v-if="value._links.events"
                 :src="value._links.events.href"
             >
             </EventViewer>
@@ -144,7 +144,7 @@
         }),
         created(){
             if(this.isNew) return;
-            
+
             var websocketUrl = new URL(window.location.href);
 
             websocketUrl.protocol = "wss";
@@ -177,10 +177,10 @@
             client.connect().subscribe({
                 onComplete: socket => {
                 let requestedMsg = 10;
-                let processedMsg = 0;
+                //let processedMsg = 0;
 
                 // console.log("connected to rsocket"); // debug
-                const endpoint = "vacations.1.get"
+                const endpoint = "vacations."+ me.value.id +".get"
                 socket.requestStream({
                     data: {},
                     metadata: String.fromCharCode(endpoint.length) + endpoint
@@ -206,8 +206,9 @@
                 onError: error => {
                     console.error(error);
                 },
-                onSubscribe: cancel => {
-                }
+                // onSubscribe: cancel => {
+                //     console.error()
+                // }
             });
 
         },
