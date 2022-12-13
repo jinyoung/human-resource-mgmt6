@@ -106,6 +106,11 @@
 <script>
     const axios = require('axios').default;
 
+    import { RSocketClient } from 'rsocket-core';
+    import RSocketWebSocketClient from 'rsocket-websocket-client';
+    import { IdentitySerializer, JsonSerializer } from "rsocket-core/build";
+
+
 
     export default {
         name: 'Calendar',
